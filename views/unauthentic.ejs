@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../stylesheets/reset.css">
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <div id="mobLogo">
+            <a href="/profile">
+                <img src="../images/Socialite square .png" alt="">
+            </a>
+        </div>
+        <div id="logo">
+            <a href="/profile">
+                <img src="../images/Socialite full.png" alt="">
+            </a>
+        </div>
+        <div id="search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search" id="searchBar">
+            <div id="searchResultsContainer">
+                
+            </div>
+        </div>
+        <div id="links">
+            <a id="prflLink" href="/profile">
+                <img id="navPrflImg" src= <%=  user.profilePhoto %> alt="">
+                <h6><%= user.name %></h6>
+            </a>
+            <a class="navLinks mobLinks tabLinks" href="/newsFeed">News Feed</a>
+            <a class="navLinks mobLinks" href="/messages">Chats</a>
+            <a class="navLinks mobLinks" href="/logout">Logout</a>
+            <div class="navLinks"><i id="settingBtn" class="fas fa-cog"></i></div>
+        </div>
+    </nav>
+    <div id="menu">
+        <a id="userInfo" href="/profile">
+            <img src= <%=  user.profilePhoto %>  alt="">
+            <h4><%= user.name %></h4>
+        </a>
+        <hr>
+        <a class="menuLinks" href="/newsFeed"><i class="far fa-newspaper"></i>News Feed</a>
+        <a class="menuLinks" href="/friends"><i class="fas fa-user-friends"></i>Friends</a>
+        <a class="menuLinks" href="/messages"><i class="far fa-comment"></i>Chats</a>
+        <a class="menuLinks" href="/contact"><i class="far fa-question-circle"></i>Help & Support</a>
+        <a class="menuLinks" href="/contact"><i class="fas fa-ban"></i>Report a Bug</a>
+        <a class="menuLinks" href="/pendingRequests"><i class="fas fa-user-plus"></i>Pending Friend Requests</a>
+        <a class="menuLinks" href="/resetMyPassword"><i class="fas fa-shield-alt"></i>Reset Password</a>
+        <a class="menuLinks" href="/aboutUs"><i class="fas fa-info-circle"></i>Legal</a>
+        <a class="menuLinks" href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+        
+    </div>
+    <div class="containerDiv">
+        <div id="msgContainer">
+            <div id="backHeader">
+                <i class="fas fa-times-circle"></i>
+                <h6>Suspicious activity detected</h6>
+            </div>
+            <p class="message">We've detected suspicious activity on your Socialite account. Either you're trying to access some information which is not meant for you, or you're trying to access links which you don't have privilege to access. Your account is now under review and if any such activites are seen in future, your account will be permanently blocked. We suggest you not to involve in any such activity.</p>
+            <a href="/profile" class="redirectLink">Back to home</a>
+        </div>
+    </div>
+    <script src="../javascripts/nav.js"></script>
+</body>
+</html>

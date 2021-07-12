@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/reset.css">
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            <a href="/profile">
+                <img src="../images/Group 1.png" alt="">
+            </a>
+        </div>
+        <div id="search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search" id="searchBar">
+            <div id="searchResultsContainer">
+                
+            </div>
+        </div>
+        <div id="links">
+            <a id="prflLink" href="/profile">
+                <img id="navPrflImg" src= .<%=  user.profilePhoto %> alt="">
+                <h6><%= user.name %></h6>
+            </a>
+            <a class="navLinks" href="/newsFeed">News Feed</a>
+            <a class="navLinks" href="/messages">Chats</a>
+            <a class="navLinks" href="/logout">Logout</a>
+            <div class="navLinks"><i id="settingBtn" class="fas fa-cog"></i></div>
+        </div>
+    </nav>
+</body>
+</html>

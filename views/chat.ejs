@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialite</title>
+    <link rel="stylesheet" href="../stylesheets/chat.css">
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div id="mobLogo">
+            <a href="/profile">
+                <img src="../images/Socialite square .png" alt="">
+            </a>
+        </div>
+        <div id="logo">
+            <a href="/profile">
+                <img src="../images/Socialite full.png" alt="">
+            </a>
+        </div>
+        <div id="search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search" id="searchBar">
+            <div id="searchResultsContainer">
+                
+            </div>
+        </div>
+        <div id="links">
+            <a id="prflLink" href="/profile">
+                <img id="navPrflImg" src= <%=  userFound.profilePhoto %> alt="">
+                <h6><%= userFound.name %></h6>
+            </a>
+            <a class="navLinks mobLinks" href="/newsFeed">News Feed</a>
+            <a class="navLinks mobLinks" href="/messages">Chats</a>
+            <a class="navLinks mobLinks" href="/logout">Logout</a>
+            <div class="navLinks"><i id="settingBtn" class="fas fa-cog"></i></div>
+        </div>
+    </nav>
+
+    <div id="menu">
+        <a id="userInfo" href="/profile">
+            <img src= <%=  userFound.profilePhoto %>  alt="">
+            <h4><%= userFound.name %></h4>
+        </a>
+        <hr>
+        <a class="menuLinks" href="/newsFeed"><i class="far fa-newspaper"></i>News Feed</a>
+        <a class="menuLinks" href="/friends"><i class="fas fa-user-friends"></i>Friends</a>
+        <a class="menuLinks" href="/messages"><i class="far fa-comment"></i>Chats</a>
+        <a class="menuLinks" href="/contact"><i class="far fa-question-circle"></i>Help & Support</a>
+        <a class="menuLinks" href="/contact"><i class="fas fa-ban"></i>Report a Bug</a>
+        <a class="menuLinks" href="/pendingRequests"><i class="fas fa-user-plus"></i>Pending Friend Requests</a>
+        <a class="menuLinks" href="/resetMyPassword"><i class="fas fa-shield-alt"></i>Reset Password</a>
+        <a class="menuLinks" href="/aboutUs"><i class="fas fa-info-circle"></i>Legal</a>
+        <a class="menuLinks" href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+        
+    </div>
+    <div id="main">
+        <div id="chatContainer">
+            <div id="chatHeader">
+                <div class="chatHeaderLeft">
+                    <a href= <%= `/profile/${other._id}` %>>
+                        <img src= <%= other.profilePhoto %> alt="">
+                    </a>
+                    <div class="chatHeaderLeftText">
+                        <a href= <%= `/profile/${other._id}` %>>
+                            <h4><%= other.name %> <% if(other.isVerified){ %>
+                                <img class="verifiedLogo" src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTExLjM3NSA1MTEuMzc1IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMS4zNzUgNTExLjM3NSIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBkPSJtNTExLjM3NSAyNTUuNjg3LTU3Ljg5LTY0LjI3MyA5LjA2NC04Ni4wNDUtODQuNjUtMTcuOTIxLTQzLjE4LTc1LjAxMS03OS4wMzEgMzUuMzItNzkuMDMxLTM1LjMyLTQzLjE4IDc1LjAxMS04NC42NSAxNy45MjEgOS4wNjMgODYuMDQ1LTU3Ljg5IDY0LjI3MyA1Ny44ODkgNjQuMjczLTkuMDYzIDg2LjA0NSA4NC42NSAxNy45MjEgNDMuMTggNzUuMDExIDc5LjAzMS0zNS4zMjEgNzkuMDMxIDM1LjMyMSA0My4xOC03NS4wMTEgODQuNjUtMTcuOTIxLTkuMDY0LTg2LjA0NXptLTE0OC40OTctNTUuOTg1LTEyOC4zNDUgMTQzLjc5Mi04OS4xODYtODkuMTg2IDIxLjIxMy0yMS4yMTMgNjYuNzM0IDY2LjczNCAxMDcuMjAzLTEyMC4xMDR6Ii8+PC9nPjwvc3ZnPg==" />
+                            <% } %></h4>
+                        </a>
+                        <p><%= other.username %></p>
+                    </div>
+                </div>
+            </div> 
+            <% var me = `${userFound._id}` %>
+            <div id="chatBody">
+                <div id="chatBodyAfter">
+
+                </div>
+                <% if(messages != null){ %>
+                    <% var chatUniqueId = `${messages[0].chatid}` %>
+                    <% var chatLength = `${chatLen}` %>
+                    <% messages.reverse().forEach(function(message){ %>
+                        <% if(message.author.toString() == userFound._id.toString()){ %>
+                            <div class="you">
+                                <div class="youContainer">
+                                    <a href="/profile">
+                                        <img class="chatUserImg" src= <%=userFound.profilePhoto %>>
+                                    </a>
+                                    <div class="youMsg">
+                                        <bdi>
+                                            <p><pre><%= message.msg %></pre></p>
+                                        </bdi>
+                                        <h6><%= message.time %></h6>
+                                    </div>
+                                </div>     
+                            </div>
+                        <% }else{ %>
+                            <div class="other">
+                                <div class="otherContainer">
+                                    <a href= <%= `/profile/${other._id}` %>>
+                                        <img class="chatUserImg" src= <%=other.profilePhoto %>>
+                                    </a>
+                                    <div class="otherMsg">
+                                        <p><pre><%= message.msg %></pre></p>
+                                        <h6><%= message.time %></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% }) %>
+                <% }else{ %>
+                    <div id="noMsgs">
+                        <h3>No messages yet !</h3>
+                        <p>Start conversation. Enjoy unlimited and real time messaging with Socialite</p>
+                    </div>
+                <% } %>
+            </div>
+            <div id="keyBoard">
+                <textarea name="" id="msgContent" placeholder="Type your message here..."></textarea>
+                <button id="selEmoji" class="keyBtn">Select Emojis</button>
+                <button id="sendmsg" class="keyBtn"> <p>Send </p><i class="far fa-paper-plane"></i></button>
+            </div>
+            <input type="text" class="hidden" id="me" value=<%= userFound._id %>>
+            <input type="text" class="hidden" id="other" value=<%=other._id %>>
+        </div>
+    </div>
+    <script src="../javascripts/nav.js"></script>
+    <script src="../javascripts/chat.js"></script>
+    <script src="../javascripts/fgEmojiPicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js" integrity="sha512-Jq1JnVXlkYQOYQpz31qIV/0l67d97J9I6sbILtfiSYX00Isr2zK7XDRmHW8d2iBTwNZfL7sHkHGT0EzLs90jdw==" crossorigin="anonymous"></script>
+    <script>
+            var socket = io();
+            socket.emit('new',"a new user");
+            var sendmsg = document.querySelector('#sendmsg');
+            var msgContent = document.querySelector('#msgContent');
+            var me = document.querySelector('#me').value;
+            var other = document.querySelector('#other').value;
+            var chatBody = document.querySelector('#chatBody');
+            sendmsg.addEventListener('click',function(){
+                if(msgContent.value.trim() != ""){
+                    socket.emit('newmessage',{content : msgContent.value,sender : me,receiver : other});
+                    msgContent.value = "";
+                }
+            })
+
+            msgContent.addEventListener('keyup',function(e){
+            if(e.keyCode === 13 && msgContent.value.trim() != ''){
+                e.preventDefault();
+                socket.emit('newmessage',{content : msgContent.value,sender : me,receiver : other});
+                msgContent.value = '';
+            }
+            })
+
+            socket.on('addMessage',function(data){
+                if(((data.msg.author == me ) && ( data.msg.receiver == other)) || ((data.msg.author == other ) && ( data.msg.receiver == me)) ){
+                    if(data.msg.author == me){     
+                        chatBody.innerHTML += `<div class="you">
+                    <div class="youContainer">
+                        <a href= "/profile">
+                            <img class="chatUserImg" src= <%=userFound.profilePhoto %>>
+                        </a>
+                        <div class="youMsg">
+                            <bdi>
+                                <p><pre>${data.msg.msg}</pre></p>
+                            </bdi>
+                            
+                            <h6>${data.msg.time}</h6>
+                        </div>
+                    </div>         
+                </div>`
+                    }
+                    else{
+                        chatBody.innerHTML += `<div class="other">
+                    <div class="otherContainer">
+                        <a href= /profile/${other._id}>
+                            <img class="chatUserImg" src= <%=other.profilePhoto %>>
+                        </a>
+                        <div class="otherMsg">
+                            <p><pre>${data.msg.msg}</pre></p>
+                            <h6>${data.msg.time}</h6>
+                        </div>
+                    </div>
+                </div>`
+                    }
+                }
+                chatBody.scrollTop = chatBody.scrollHeight - chatBody.clientHeight;
+                var noMsgs = document.querySelector('#noMsgs');
+                noMsgs.style.display = "none";
+            })
+    </script>
+    
+    <script>
+        const emojiPicker = new FgEmojiPicker({
+            trigger: ['#selEmoji'],
+            removeOnSelection: false,
+            closeButton: true,
+            position: ['top', 'left'],
+            preFetch: true,
+            insertInto: document.querySelector('textarea'),
+            emit(obj, triggerElement) {
+                console.log(obj, triggerElement);
+            }
+        });
+    </script>
+    <script>
+    
+    var chatBodyAfter = document.querySelector('#chatBodyAfter');
+    var chatBody = document.querySelector('#chatBody');
+    const chatId = "<%= chatUniqueId %>";
+    const chatLen = "<%= chatLength %>";
+    const meId = "<%= me %>"
+    var pages = Math.ceil((chatLen-10)/10);
+
+    var limit = pages>= 1 ? 1 : 0;
+    var strParts = "";
+    var scrollHeight = chatBody.scrollHeight;
+    var isTrue = true;
+    chatBody.addEventListener('scroll',function(){
+        var chatBody = document.querySelector('#chatBody');
+        if((chatBody.scrollTop < 50 && isTrue )  && (pages >= limit) && pages > 0){
+            isTrue = false;
+            fetch(`/getMessages/${chatId}/${limit++}`)
+            .then(content => content.json())
+            .then(function(data){
+                strParts = "";
+                data.messages.reverse().forEach(function(message){
+                    if(message.author == meId){
+                    strParts += `
+                            <div class="you">
+                                <div class="youContainer">
+                                    <a href="/profile">
+                                        <img class="chatUserImg" src= ${data.meUser.profilePhoto}>
+                                    </a>
+                                    <div class="youMsg">
+                                        <bdi>
+                                            <p><pre>${message.msg}</pre></p>
+                                        </bdi>
+                                        <h6>${message.time }</h6>
+                                    </div>
+                                </div>     
+                            </div> `;
+                        }else{
+                            strParts += `
+                            <div class="other">
+                                <div class="otherContainer">
+                                    <a href= /profile/${data.otherUser._id}>
+                                        <img class="chatUserImg" src= ${data.otherUser.profilePhoto}>
+                                    </a>
+                                    <div class="otherMsg">
+                                        <p><pre>${message.msg}</pre></p>
+                                        <h6>${message.time }</h6>
+                                    </div>
+                                </div>
+                            </div>`;
+                        }
+                })
+                var chatBodyAfter = document.querySelector('#chatBodyAfter');
+                var tempHTML = document.createElement('div');
+                var parent = chatBodyAfter.parentNode;
+                // chatBody.innerHTML = strParts + chatBody.innerHTML; 
+                tempHTML.innerHTML = strParts;
+                parent.insertBefore(tempHTML, chatBody.firstChild); 
+                chatBodyAfter.scrollTop = strParts.offsetHeight + 30;
+                isTrue = true;
+            })
+            
+        } 
+    })
+    </script>
+</body>
+</html>

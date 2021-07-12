@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../stylesheets/reset.css">
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <div id="mobLogo">
+            <a href="/profile">
+                <img src="../images/Socialite square .png" alt="">
+            </a>
+        </div>
+        <div id="logo">
+            <a href="/profile">
+                <img src="../images/Socialite full.png" alt="">
+            </a>
+        </div>
+        <div id="search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search" id="searchBar">
+            <div id="searchResultsContainer">
+                
+            </div>
+        </div>
+        <div id="links">
+            <a id="prflLink" href="/profile">
+                <img id="navPrflImg" src= <%=  data.profilePhoto %> alt="">
+                <h6><%= data.name %></h6>
+            </a>
+            <a class="navLinks mobLinks" href="/newsFeed">News Feed</a>
+            <a class="navLinks mobLinks" href="/messages">Chats</a>
+            <a class="navLinks mobLinks" href="/logout">Logout</a>
+            <div class="navLinks"><i id="settingBtn" class="fas fa-cog"></i></div>
+        </div>
+    </nav>
+
+    <div id="menu">
+        <a id="userInfo" href="/profile">
+            <img src= <%=  data.profilePhoto %>  alt="">
+            <h4><%= data.name %></h4>
+        </a>
+        <hr>
+        <a class="menuLinks" href="/newsFeed"><i class="far fa-newspaper"></i>News Feed</a>
+        <a class="menuLinks" href="/friends"><i class="fas fa-user-friends"></i>Friends</a>
+        <a class="menuLinks" href="/messages"><i class="far fa-comment"></i>Chats</a>
+        <a class="menuLinks" href="/contact"><i class="far fa-question-circle"></i>Help & Support</a>
+        <a class="menuLinks" href="/contact"><i class="fas fa-ban"></i>Report a Bug</a>
+        <a class="menuLinks" href="/pendingRequests"><i class="fas fa-user-plus"></i>Pending Friend Requests</a>
+        <a class="menuLinks" href="/resetMyPassword"><i class="fas fa-shield-alt"></i>Reset Password</a>
+        <a class="menuLinks" href="/aboutUs"><i class="fas fa-info-circle"></i>Legal</a>
+        <a class="menuLinks" href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+        
+    </div>
+    <div class="containerDiv">
+        <div id="back">
+            <div id="backHeader">
+                <h3>Reset Password</h3>
+            </div>
+            <form action= "/resetPassword/setNewPass" method="POST" onsubmit=" validate(event);">
+                <input type="password" id="pass1" name="password" placeholder="Enter Password">
+                <div class="alert" id="passalert"><i class="fas fa-exclamation-circle"></i>Please enter a strong password.</div>
+                <input type="password" id="pass2" placeholder="Re-enter Password">
+                <div class="alert" id="mismatchalert"><i class="fas fa-exclamation-circle"></i>Passwords did not match.</div>
+                <div id="passwordNoticeContainer">
+                    <div id="passwordNotice">
+                      <ul style="list-style-type:disc">
+                        <p> Password must contain : </p>
+                        <li>Minimum 8 characters and maximum 15 characters in total.</li>
+                        <li>Atleast one upper and lower case characters. [a-z] [A-Z]</li>
+                        <li>Atleast one number. [0-9]</li>
+                        <li>Atleast one special character. [@,#,$,& etc]</li>
+                      </ul>              
+                    </div>
+                    <h6 id="passRules"><i class="fas fa-exclamation-circle"></i>Password Rules</h6>
+                  </div>
+                <input type="submit" value="Update Password">
+            </form>
+        </div>
+    </div>
+    <script>
+        var passalert = document.querySelector('#passalert');
+        var mismatchalert = document.querySelector('#mismatchalert');
+        function validate(event){
+            var pass1 = document.querySelector('#pass1').value;
+            var pass2 = document.querySelector('#pass2').value;
+            passalert.style.display = 'none';
+            mismatchalert.style.display = 'none';
+            if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(pass1)){
+                passalert.style.display = "block";
+                event.preventDefault();
+            }
+            else if(pass1 !== pass2){
+                mismatchalert.style.display = "block";
+                event.preventDefault();
+            }
+        }
+        var passwordRules = document.querySelector('#passRules');
+        var passwordNotice = document.querySelector('#passwordNotice');
+        passwordRules.addEventListener('mouseover',function(){
+        passwordNotice.style.display = 'block';
+        })
+        passwordRules.addEventListener('mouseout',function(){
+        passwordNotice.style.display = 'none';
+        })
+    </script>
+    <script src="../javascripts/nav.js"></script>
+</body>
+</html>

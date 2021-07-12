@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/profile.css">
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../stylesheets/lightcase.css">
+    <script type="text/javascript" src="../javascripts/lightcase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <title>Socialite</title>
+</head>
+<body>
+    <nav>
+        <div id="mobLogo">
+            <a href="/profile">
+                <img src="../images/Socialite square .png" alt="">
+            </a>
+        </div>
+        <div id="logo">
+            <a href="/profile">
+                <img src="../images/Socialite full.png" alt="">
+            </a>
+        </div>
+        <div id="search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search" id="searchBar">
+            <div id="searchResultsContainer">
+                
+            </div>
+        </div>
+        <div id="links">
+            <a id="prflLink" href="/profile">
+                <img id="navPrflImg" src= <%= me.profilePhoto %> alt="">
+                <h6><%= me.name %></h6>
+            </a>
+            <a class="navLinks mobLinks" href="/newsFeed">News Feed</a>
+            <a class="navLinks mobLinks" href="/messages">Chats</a>
+            <a class="navLinks mobLinks" href="/logout">Logout</a>
+            <div class="navLinks"><i id="settingBtn" class="fas fa-cog"></i></div>
+        </div>
+    </nav>
+
+    <div id="menu">
+        <a id="userInfo" href="/profile">
+            <img src= <%= me.profilePhoto %> alt="">
+            <h4><%= me.name %></h4>
+        </a>
+        <hr>
+        <a class="menuLinks" href="/newsFeed"><i class="far fa-newspaper"></i>News Feed</a>
+        <a class="menuLinks" href="/friends"><i class="fas fa-user-friends"></i>Friends</a>
+        <a class="menuLinks" href="/messages"><i class="far fa-comment"></i>Chats</a>
+        <a class="menuLinks" href="/contact"><i class="far fa-question-circle"></i>Help & Support</a>
+        <a class="menuLinks" href="/contact"><i class="fas fa-ban"></i>Report a Bug</a>
+        <a class="menuLinks" href="/pendingRequests"><i class="fas fa-user-plus"></i>Pending Friend Requests</a>
+        <a class="menuLinks" href="/resetMyPassword"><i class="fas fa-shield-alt"></i>Reset Password</a>
+        <a class="menuLinks" href="/aboutUs"><i class="fas fa-info-circle"></i>Legal</a>
+        <a class="menuLinks" href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+        
+    </div>
+    <div id="back">
+        <div id="showReactions">
+           
+        </div>
+        <div id="postDelUpdate">
+            
+        </div>
+        <div id="backCover">
+            <div class="container">
+                <div id="cover">
+                    <a draggable="false" href= <%= user.CoverPhoto %> data-rel="lightcase">
+                        <img src= <%= user.CoverPhoto %> alt="">
+                    </a>
+                    <div id="profileImage">
+                        <a draggable="false" href= <%= user.profilePhoto %> data-rel="lightcase">
+                            <img src= <%= user.profilePhoto %> alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+           <div id="userDets">
+               <div id="uname">
+                <h3><%= user.name %></h3>
+                <% if(user.isVerified){ %>
+                    <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTExLjM3NSA1MTEuMzc1IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMS4zNzUgNTExLjM3NSIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBkPSJtNTExLjM3NSAyNTUuNjg3LTU3Ljg5LTY0LjI3MyA5LjA2NC04Ni4wNDUtODQuNjUtMTcuOTIxLTQzLjE4LTc1LjAxMS03OS4wMzEgMzUuMzItNzkuMDMxLTM1LjMyLTQzLjE4IDc1LjAxMS04NC42NSAxNy45MjEgOS4wNjMgODYuMDQ1LTU3Ljg5IDY0LjI3MyA1Ny44ODkgNjQuMjczLTkuMDYzIDg2LjA0NSA4NC42NSAxNy45MjEgNDMuMTggNzUuMDExIDc5LjAzMS0zNS4zMjEgNzkuMDMxIDM1LjMyMSA0My4xOC03NS4wMTEgODQuNjUtMTcuOTIxLTkuMDY0LTg2LjA0NXptLTE0OC40OTctNTUuOTg1LTEyOC4zNDUgMTQzLjc5Mi04OS4xODYtODkuMTg2IDIxLjIxMy0yMS4yMTMgNjYuNzM0IDY2LjczNCAxMDcuMjAzLTEyMC4xMDR6Ii8+PC9nPjwvc3ZnPg==" />
+                <% } %>
+               </div>
+               <div id="bio">
+                <% if(user.bio != ""){ %>
+                 <p><%=user.bio %></p>
+                <% } %>
+                </div>
+               <div id="friendLinks">
+                   <% if(me.friends.find(o => o == `${user._id}`)){ %>
+                        <a href=<%=  `/unfriend/${user._id}` %>  class="frndLink">Remove Friend</a>
+                   <% }else if(user.pendingRequests.find(o => o == `${me._id}`)){ %>
+                        <a class="frndLink" href= <%=  `/cancelRequest/${user._id}` %> >Cancel Friend Request</a>
+                   <% }else if(me.pendingRequests.find(o => o == `${user._id}`)){ %>
+                    <a class="frndLink" href= <%=  `/friendAdded/${user._id}` %> >Accept Request</a>
+                   <% }else { %>
+                        <a class="frndLink" href= <%=  `/addFriend/${user._id}` %> >Add Friend</a>
+                   <% } %>
+                   <a class="frndLink chatLink" href= <%=  `/chat/${user._id}` %> >Send Message</a>
+                   
+                   
+               </div>
+           </div>
+           <div class="flexContainer">
+            <div class="card50" id="aboutInfo">
+                <h4>About</h4>
+                <div class="aboutFields">
+                    <i class="far fa-user"></i>
+                    <p>Username : <span class="bold"><%= user.username %></span></p>
+                </div>
+                <% if(user.from != undefined && user.from != ""){ %>
+                    <div class="aboutFields">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p><%= user.from %></p>
+                    </div>
+                <% } %>
+                <% if(user.dob != undefined && user.dob != ""){ %>
+                    <div class="aboutFields">
+                        <i class="fas fa-birthday-cake"></i>
+                        <p>Born : <span class="bold"><%= user.dob %></span></p>
+                    </div>
+                <% } %>
+                <div class="aboutFields">
+                    <i class="far fa-envelope-open"></i>
+                    <p><%= user.email %></p>
+                </div>
+                <% if(user.currentStatus != undefined && user.currentStatus != ""){ %>
+                    <div class="aboutFields">
+                        <i class="fas fa-crosshairs"></i>
+                        <p>Current Status : <span class="bold"><%= user.currentStatus %></span></p>
+                    </div>
+                <% } %>
+                <% if(user.relationStatus != undefined && user.relationStatus != ""){ %>
+                    <div class="aboutFields">
+                        <i class="fas fa-heart"></i>
+                        <p>Relationship Status : <span class="bold"> <%= user.relationStatus %></span></p>
+                    </div>
+                <% } %>
+                <% if(user.gender != undefined && user.gender != ""){ %>
+                    <div class="aboutFields">
+                        <i class="fas fa-restroom"></i>
+                        <p>Gender: <span class="bold"> <%= user.gender %></span></p>
+                    </div>
+                <% } %>
+                <% if(user.interestedIn != undefined && user.interestedIn != ""){ %>
+                    <div class="aboutFields">
+                        <i class="fas fa-people-arrows"></i>
+                        <p>Interested In : <span class="bold"> <%= user.interestedIn %></span></p>
+                    </div>
+                <% } %>
+                <% if(user.hobbies != undefined && user.hobbies != ""){ %>
+                    <div class="aboutFields">
+                        <i class="fas fa-icons"></i>
+                        <p>Hobbies : <%= user.hobbies %></p>
+                    </div>
+                <% } %>
+                <div class="aboutFields">
+                    <i class="fas fa-user-friends"></i>
+                    <% var len = user.friends.length %>
+                    <p>Friends with <span class="bold"><a class="otherFriendLink" href= <%= `/friends/${user._id}` %>><%= len %> people</a></span></p>
+                </div>
+            </div>
+            <% var postsLen = `${postsLen}` %>
+            <% var userId = `${user._id}` %>
+            <% var host = `${host}` %>
+            <% var meDets = `{ name : ${me.name}, _id : ${me._id},profilePhoto : ${me.profilePhoto}}` %>
+            <% var dynaIds = 1 %>
+            <% var dynamicIds = 1 %>
+            <% var dynamicCommentIds = 1 %>
+            <% var newCommentDynamic = 1 %>
+            <% var newCommentId %>
+            <div id="allPosts">
+                <div id="posts">
+                    <% if(user.posts.length > 0){ %>
+                        <% user.posts.forEach(function(post){ %>
+                            <div class="post card50">
+                                <div class="postHeader">
+                                    <a href= <%= `/profile/${user._id}` %>>
+                                        <img src= <%= user.profilePhoto %> alt="">
+                                    </a>
+                                    <div class="postHeaderDets">
+                                        <div class="postHeaderDetsTxt">
+                                            <h6><%= user.name %><% if(user.isVerified){ %>
+                                                <img class="verifiedLogo" src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTExLjM3NSA1MTEuMzc1IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMS4zNzUgNTExLjM3NSIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBkPSJtNTExLjM3NSAyNTUuNjg3LTU3Ljg5LTY0LjI3MyA5LjA2NC04Ni4wNDUtODQuNjUtMTcuOTIxLTQzLjE4LTc1LjAxMS03OS4wMzEgMzUuMzItNzkuMDMxLTM1LjMyLTQzLjE4IDc1LjAxMS04NC42NSAxNy45MjEgOS4wNjMgODYuMDQ1LTU3Ljg5IDY0LjI3MyA1Ny44ODkgNjQuMjczLTkuMDYzIDg2LjA0NSA4NC42NSAxNy45MjEgNDMuMTggNzUuMDExIDc5LjAzMS0zNS4zMjEgNzkuMDMxIDM1LjMyMSA0My4xOC03NS4wMTEgODQuNjUtMTcuOTIxLTkuMDY0LTg2LjA0NXptLTE0OC40OTctNTUuOTg1LTEyOC4zNDUgMTQzLjc5Mi04OS4xODYtODkuMTg2IDIxLjIxMy0yMS4yMTMgNjYuNzM0IDY2LjczNCAxMDcuMjAzLTEyMC4xMDR6Ii8+PC9nPjwvc3ZnPg==" />
+                                            <% } %></h6>
+                                            <p><%= post.when %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="caption">
+                                    <p><%=post.content%></p>
+                                </div>
+                                <% if(post.media != null){ %>
+                                    <a draggable="false" href= <%= post.media %> data-rel="lightcase" class="postImage">
+                                        <img src= <%= post.media %>  alt="">
+                                    </a>
+                                <% } %>
+                                <% var postLikesId  %>
+                                <% var postOptsLikesId  %>
+                                <div class="postReactions">
+                                    <a href= <%= `/likedBy/${post._id}` %>>
+                                        <% postLikesId = `postLikes-${dynaIds++}` %>
+                                        <div class="postLikes" id=<%= postLikesId%>>
+                                            <i class="fas fa-thumbs-up likeIcon"></i>
+                                            <div class="postLikeNames">
+                                                <% if(post.reactions.length >= 3){ %>
+                                                    <p><%= `Liked by ${post.reactions[0].name} and ${post.reactions.length -1} other` %></p>
+                                                <% }else if(post.reactions.length == 2  ){ %>
+                                                    <p><%= `Liked by ${post.reactions[0].name} and ${post.reactions[1].name}` %></p>
+                                                <% }else if(post.reactions.length == 1){ %>
+                                                    <p><%= `Liked by ${post.reactions[0].name}` %></p>
+                                                <% } else{ %>
+                                                    <p>0 Likes</p>
+                                                <% } %>
+                                            </div>
+                                            <p class="mobPostLikes"><%= post.reactions.length %> Likes</p>
+                                        </div>
+                                    </a>
+                                    <a href= <%= `/post/${post._id}` %>>
+                                        <p class="postComments"><%= post.comments.length %> Comments</p>
+                                    </a>
+                                    <!-- <button class="btn" data-clipboard-text="anc">
+                                        Copy to clipboard
+                                    </button> -->
+                                </div>
+                                <div class="postOptions">    
+                                    <% postOptsLikesId = `postOptsLikes-${dynamicIds++}` %>
+                                    <button onclick="likePost('<%= post._id %>','<%= dynamicIds-1 %>')" class="postOpts" id= <%= postOptsLikesId %>>
+                                        <% if(post.reactions.find(o => o.username == `${me.username}`)){ %>
+                                            
+                                            <i class="fas fa-thumbs-up likeIcon"></i>
+                                            <p class="likeText">Liked</p>
+                                        <% }else{ %>
+                                            <i class="far fa-thumbs-up postOptsIcon"></i>
+                                            <p>Like</p>
+                                        <% } %>
+
+
+                                    </button>
+                                    <a href= <%= `/post/${post._id}` %> class="postOpts">
+                                        <i class="far fa-comment-alt postOptsIcon"></i>
+                                        <p>Comments</p>
+                                    </a>
+                                    <button class="btn postOpts" data-clipboard-text=<%= `${host}/view/${post._id}` %>>
+                                        <i class="far fa-clipboard postOptsIcon"></i>
+                                        <p>Copy Link</p>
+                                    </button>
+                                </div>
+
+                                <div class="comments">
+                                    <% if(post.comments.length >= 1){ %>
+                                        <% var a = (`${post.comments.length}` >= 2) ? 2 : `${post.comments.length}`  %>
+                                        <% for(var i=0;i<a;i++) { %>
+                                            <div class="comment">
+                                                
+                                                <a href= <%= `/profile/${post.comments[i].userid._id}` %> class="commentUserProfile">
+                                                    <img src= <%=post.comments[i].userid.profilePhoto %> alt="">
+                                                </a>
+                                                <div class="commentDets">
+                                                    <div class="commentDetsInfo">
+                                                        <a href= <%= `/profile/${post.comments[i].userid._id}` %>>
+                                                            <h6><%=post.comments[i].userid.name %></h6>
+                                                            <p><%=post.comments[i].when %></p>
+                                                        </a>
+                                                        <div class="commentDetsOpts">
+                                                            <% if(post.comments[i].userid._id == `${me._id}`){ %>
+                                                                <div class="tooltip"> <button onclick="showEditCommentDiv('<%= post.comments[i]._id %>')"><i class="fas fa-pencil-alt"></i></button>
+                                                                    <span class="tooltiptext">Edit Comment</span>
+                                                                </div>
+                                                            <% } %>
+                                                            <% if((post.comments[i].userid._id == `${me._id}`)){ %>
+                                                                <div class="tooltip"> <button onclick="showDelCommentDiv('<%= post.comments[i]._id %>','<%= post._id %>')"><i class="far fa-trash-alt"></i></button>
+                                                                    <span class="tooltiptext" >Delete Comment</span>
+                                                                </div>
+                                                            <% } %>
+                                                        </div>
+                                                    </div>
+                                                    <% var commentsOptsId %>
+                                                    <div class="commentContent">
+                                                        <p><%= post.comments[i].cmnt %></p>
+                                                        <% commentsOptsId = `commentReacts-${dynamicCommentIds++}` %>
+                                                        <div class="commentReacts" id= <%= commentsOptsId %>>
+                                                            <button onclick="likeComment('<%= post.comments[i]._id %>','<%= dynamicCommentIds-1 %>')" class="commentReactions">
+                                                                <% if(post.comments[i].reactions.find(o => o.username === `${me.username}`)){ %>
+                                                                    <i class="fas fa-thumbs-up likeText"></i>
+                                                                    <p class="likeText">Liked</p>
+                                                                <% }else{ %>
+                                                                    <i class="far fa-thumbs-up"></i>
+                                                                    <p>Like</p>
+                                                                <% } %>  
+                                                            </button>
+                                                            <% if(`${post.comments[i].reactions.length}` > 0) { %>
+                                                                <button class="commentReactLen" onclick="showReactionDiv('<%=post.comments[i]._id %>')"><%=`( ${post.comments[i].reactions.length} Likes )` %></button>
+                                                            <% }%>
+
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% } %>
+                                        <% if(post.comments.length > 2){ %>
+                                            <a href= <%= `/post/${post._id}` %> class="viewAllComments">View all comments <i class="fas fa-arrow-right"></i></a>
+                                        <% } %>
+                                    <% } %>
+
+        
+                                </div>
+                                
+                                <div class="addComment">
+                                    <a href="/profile" class="commentUserProfile">
+                                        <img src= <%= me.profilePhoto %> alt="">
+                                    </a>
+                                    <% newCommentId = `newCommentId-${newCommentDynamic++}` %>
+                                    <form action=<%= `/comment/${post._id}` %> onsubmit="addNewComment(event,'<%=newCommentDynamic-1%>')" method="POST">
+                                        <textarea name="comment" placeholder="Write a comment" id=<%= newCommentId %>></textarea>
+                                        <input type="submit" value="Add Comment">
+                                    </form>
+                                </div>
+                            </div>
+
+                        <% }) %>
+                    <% } else{ %>
+                        <div class="noPosts">
+                            <h6>No posts to show !</h6>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+           </div>
+        </div>
+    </div>
+    <script src="../javascripts/profile.js"></script> 
+    <script src="../javascripts/nav.js"></script>                                                               
+    <script>
+  jQuery(document).ready(function($) {
+		$('a[data-rel^=lightcase]').lightcase();
+	});
+    </script>
+    <script>
+    new ClipboardJS('.btn');
+    var btns = document.querySelectorAll('.btn');
+    btns.forEach(function(item) {
+        item.addEventListener('click', function() {
+        alert("Copied");
+    });
+   });
+
+    </script>
+
+</script>
+<script>
+
+
+    let currentscrollHeight = 0;
+    let lockScroll = false;
+    var postsDiv = document.querySelector('#posts');
+    var postsLen = "<%= postsLen %>";
+    var currentUserId = "<%=userId%>";
+    var pages = Math.ceil((postsLen-5)/5);
+    var host = "<%= host %>";
+    var me = "<%= meDets %>";
+    var dynaIds = "<%=dynaIds %>";
+    var dynamicIds = "<%=dynamicIds %>";
+    var postLikesId;
+    var postOptsLikesId;
+    var dynamicCommentIds = "<%=dynamicCommentIds %>";
+    var newCommentDynamic = "<%=newCommentDynamic %>"
+    var addNewCommentId;
+    var commentsOptsId ;
+    var limit = pages>= 1 ? 1 : 0;
+    $(window).on("scroll", () => {
+    const scrollHeight = $(document).height();
+    const scrollPos = Math.floor($(window).height() + $(window).scrollTop());
+    const isBottom = scrollHeight - 300 < scrollPos;
+    
+    
+    if (isBottom && currentscrollHeight < scrollHeight && pages >= limit && pages >=1) {
+        var url = `/getPosts/${limit}/${currentUserId}`;
+        fetch(url)
+            .then(foundData => foundData.json())
+            .then(function(user){
+                user.user.posts.forEach(function(post){
+
+                    var strParts = `<div class="post card50">
+                                    <div class="postHeader">
+                                        <a href= /profile/${user.user._id}>
+                                            <img src= ${user.user.profilePhoto} alt="">
+                                        </a>
+                                        <div class="postHeaderDets">
+                                            <div class="postHeaderDetsTxt">
+                                                <h6>${user.user.name} ` 
+                                                    if(user.user.isVerified){
+                                                strParts += `<img class="verifiedLogo" src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTExLjM3NSA1MTEuMzc1IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMS4zNzUgNTExLjM3NSIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBkPSJtNTExLjM3NSAyNTUuNjg3LTU3Ljg5LTY0LjI3MyA5LjA2NC04Ni4wNDUtODQuNjUtMTcuOTIxLTQzLjE4LTc1LjAxMS03OS4wMzEgMzUuMzItNzkuMDMxLTM1LjMyLTQzLjE4IDc1LjAxMS04NC42NSAxNy45MjEgOS4wNjMgODYuMDQ1LTU3Ljg5IDY0LjI3MyA1Ny44ODkgNjQuMjczLTkuMDYzIDg2LjA0NSA4NC42NSAxNy45MjEgNDMuMTggNzUuMDExIDc5LjAzMS0zNS4zMjEgNzkuMDMxIDM1LjMyMSA0My4xOC03NS4wMTEgODQuNjUtMTcuOTIxLTkuMDY0LTg2LjA0NXptLTE0OC40OTctNTUuOTg1LTEyOC4zNDUgMTQzLjc5Mi04OS4xODYtODkuMTg2IDIxLjIxMy0yMS4yMTMgNjYuNzM0IDY2LjczNCAxMDcuMjAzLTEyMC4xMDR6Ii8+PC9nPjwvc3ZnPg==" /> `;
+                                            }
+                                                strParts+= `    </h6>
+                                                <p>${post.when}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="caption">
+                                        <p>${post.content}</p>
+                                    </div>`;
+                                    jQuery(document).ready(function($) {
+                                        $('a[data-rel^=lightcase]').lightcase();
+                                    });
+
+                                    if( post.media != null){
+
+                                        strParts += `<a draggable="false" href= ${post.media} data-rel="lightcase" class="postImage">
+                                            <img src= ${post.media}  alt="">
+                                        </a>`;
+                                    }
+                                    postLikesId = `postLikes-${dynaIds++}`;
+                                        strParts += `<div class="postReactions">
+                                        <a href= /likedBy/${post._id}>
+                                            <div class="postLikes" id= ${postLikesId}>
+                                                <i class="fas fa-thumbs-up likeIcon"></i><div class="postLikeNames">`;
+                                        if(post.reactions.length >= 3){
+                                            strParts += 
+                                            `<p>Liked by ${post.reactions[0].name} and ${post.reactions.length -1} other</p>`;
+                                        }else if(post.reactions.length == 2  ){
+                                            strParts +=
+                                            `<p>Liked by ${post.reactions[0].name} and ${post.reactions[1].name}</p>`
+                                        }else if(post.reactions.length == 1){
+                                            strParts += `<p>Liked by ${post.reactions[0].name}</p>`
+                                            
+                                        } else{
+                                            strParts += `<p>0 Likes</p>`     
+                                        }
+                                        postOptsLikesId = `postOptsLikes-${dynamicIds++}`
+                                        strParts += `</div>
+                                            <p class="mobPostLikes">${post.reactions.length} Likes</p>
+                                            </div>
+                                        </a>
+                                        <a href= /post/${post._id}>
+                                            <p class="postComments">${post.comments.length } Comments</p>
+                                        </a>
+                                    </div>
+                                    <div class="postOptions">
+                                        <button onclick="likePost('${post._id}','${dynamicIds-1}')" class="postOpts" id=${postOptsLikesId}>`;
+                                               
+                                            if(post.reactions.find(o => o.username === user.me.username)){
+                                                strParts += `
+                                                <i class="fas fa-thumbs-up likeIcon"></i>
+                                                <p class="likeText">Liked</p>`;
+                                            }else{
+                                                strParts += `
+                                                <i class="far fa-thumbs-up postOptsIcon"></i>
+                                                <p>Like</p>`;
+                                            } 
+
+                                    strParts += ` </button>
+                                        <a href= /post/${post._id} class="postOpts">
+                                            <i class="far fa-comment-alt postOptsIcon"></i>
+                                            <p>Comments</p>
+                                        </a>
+                                        <button class="btn postOpts" data-clipboard-text= ${host}/view/${post._id}>
+                                            <i class="far fa-clipboard postOptsIcon"></i>
+                                            <p>Copy Link</p>
+                                        </button>
+                                    </div>
+                                    <div class="comments"> `;       
+
+                                            
+                                            
+                                        if(post.comments.length >= 1){
+                                            var a = (post.comments.length >= 2) ? 2 : post.comments.length
+                                            for(var i=0;i<a;i++) {
+                                                commentsOptsId = `commentReacts-${dynamicCommentIds++}`;
+                                                strParts += `
+                                                <div class="comment">
+                                                    
+                                                    <a href= /profile/${post.comments[i].userid._id} class="commentUserProfile">
+                                                        <img src= ${post.comments[i].userid.profilePhoto} alt="">
+                                                    </a>
+                                                    <div class="commentDets">
+                                                        <div class="commentDetsInfo">
+                                                            <a href= /profile/${post.comments[i].userid._id}>
+                                                                <h6>${post.comments[i].userid.name}</h6>
+                                                                <p>${post.comments[i].when} </p>
+                                                            </a>
+                                                            <div class="commentDetsOpts"> `;
+
+                                                                if(post.comments[i].userid._id == user.me._id){
+                                                                    var part = '<div class="tooltip"> <button onclick="showEditCommentDiv(\'' + post.comments[i]._id + '\')"><i class="fas fa-pencil-alt"></i></button><span class="tooltiptext">Edit Comment</span></div> ' 
+                                                                    strParts += part;
+                                                                }
+                                                                if((post.comments[i].userid._id == user.me._id)){
+                                                                    var part = ' <div class="tooltip"> <button onclick="showDelCommentDiv(\'' + post.comments[i]._id + '\',\'' + post._id + '\')"><i class="far fa-trash-alt"></i></button><span class="tooltiptext" >Delete Comment</span></div> '
+                                                                    strParts += part;
+                                                                }
+
+                                                                strParts += `
+                                                            </div>
+                                                        </div>
+                                                        <div class="commentContent">
+                                                            <p>${post.comments[i].cmnt}</p>
+                                                            <div class="commentReacts" id= ${commentsOptsId}>
+                                                                <button onclick="likeComment('${post.comments[i]._id}','${dynamicCommentIds-1}')" class="commentReactions"> `;
+
+                                                                    if(post.comments[i].reactions.find(o => o.username == user.me.username)){
+                                                                        strParts += `
+                                                                        <i class="fas fa-thumbs-up likeText"></i>
+                                                                        <p class="likeText">Liked</p>  `;
+                                                                    }else{
+                                                                        strParts += `
+                                                                        <i class="far fa-thumbs-up"></i>
+                                                                        <p>Like</p> `;
+                                                                    }
+                                                                strParts += `
+                                                                </button> `;
+
+                                                                if(post.comments[i].reactions.length > 0) {
+                                                                    strParts += `
+                                                                    <button class="commentReactLen" onclick="showReactionDiv('${post.comments[i]._id}')">( ${post.comments[i].reactions.length} Likes )</button> `;
+                                                                }
+                                                            strParts += `
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>`;
+                                            }
+                                            if(post.comments.length > 2){
+                                                strParts += `
+                                                <a href= /post/${post._id} class="viewAllComments">View all comments <i class="fas fa-arrow-right"></i></a> `;
+                                            }
+                                        }        
+                                    addNewCommentId = `newCommentId-${newCommentDynamic++}`;
+                                    strParts += `
+                                    </div>
+                                    <div class="addComment">
+                                        <a href="/profile" class="commentUserProfile">
+                                            <img src= ${user.me.profilePhoto} alt="">
+                                        </a>
+                                        <form action= /comment/${post._id} onsubmit="addNewComment(event,'${newCommentDynamic-1}')" method="POST">
+                                            <textarea name="comment" placeholder="Write a comment" id=${addNewCommentId}></textarea>
+                                            <input type="submit" value="Add Comment">
+                                        </form>
+                                    </div>
+                                </div> `;                            
+                                postsDiv.innerHTML += strParts;
+                                strParts = "";
+                                new ClipboardJS('.btn');
+                                var btns = document.querySelectorAll('.btn');
+                                btns.forEach(function(item) {
+                                    item.addEventListener('click', function() {
+                                    alert("Copied");
+                                });
+                            });
+                })
+                
+            })
+            limit++;
+        currentscrollHeight = scrollHeight;
+    }
+});
+
+
+function likePost(postId,num){
+            var likeDivId = `#postOptsLikes-${num}`;
+            var likedById = `#postLikes-${num}`;
+            var likeDiv = document.querySelector(`${likeDivId}`);
+            var likedByDiv = document.querySelector(`${likedById}`);
+            fetch(`/post/${postId}/like`)
+            .then(reactedPost => reactedPost.json())
+            .then(function(data){
+                if(data.reacted.find(o => o.username == data.user.username)){
+                    likeDiv.innerHTML = '<i class="fas fa-thumbs-up likeIcon"></i><p class="likeText">Liked</p>';
+
+                }else{
+                    likeDiv.innerHTML = '<i class="far fa-thumbs-up postOptsIcon"></i><p>Like</p>';
+                }
+
+                if(window.innerWidth > 600){
+                    if(data.reacted.length >= 3){
+                        likedByDiv.innerHTML = `<i class="fas fa-thumbs-up likeIcon"></i><p>Liked by ${data.reacted[0].name} and ${data.reacted.length -1} other</p>`;
+                    }else if(data.reacted.length == 2  ){
+                        likedByDiv.innerHTML=
+                        `<i class="fas fa-thumbs-up likeIcon"></i><p>Liked by ${data.reacted[0].name} and ${data.reacted[1].name}</p>`
+                    }else if(data.reacted.length == 1){
+                        likedByDiv.innerHTML= `<i class="fas fa-thumbs-up likeIcon"></i><p>Liked by ${data.reacted[0].name}</p>`
+                        
+                    } else{
+                        likedByDiv.innerHTML= `<i class="fas fa-thumbs-up likeIcon"></i><p>0 Likes</p>`     
+                    }
+                }
+                else{
+                    likedByDiv.innerHTML = `<i class="fas fa-thumbs-up likeIcon"></i><p>${data.reacted.length} Likes</p>`;
+                }
+            })
+        }
+
+        function likeComment(commentId,num){
+        var likeCommentDivId = `#commentReacts-${num}`;
+        var likeCommentDiv = document.querySelector(`${likeCommentDivId}`)
+        fetch(`/comment/${commentId}/like`)
+        .then(foundComment => foundComment.json())
+        .then(function(data){
+            var stringParts = '';
+            stringParts = `
+            <button onclick="likeComment('${commentId}','${num}')" class="commentReactions">`;
+            if(data.reacted.find(o => o.username == `${data.user.username}`)){
+                stringParts += `
+                <i class="fas fa-thumbs-up likeText"></i>
+                <p class="likeText">Liked</p>`;
+            }else{
+                stringParts += `
+                <i class="far fa-thumbs-up"></i>
+                <p>Like</p>`;
+            }
+            stringParts += `
+            </button>`;
+        if(`${data.reacted.length}` > 0) {
+            stringParts += `
+            <button class="commentReactLen" onclick="showReactionDiv('${commentId}')">( ${data.reacted.length} Likes )</button>`;
+        }
+        likeCommentDiv.innerHTML = stringParts;
+        })
+    }
+
+    function addNewComment(event,num){
+        var newCommentId = `#newCommentId-${num}`;
+    var newCommentText = document.querySelector(`${newCommentId}`);
+    if(newCommentText.value.trim() == ""){
+        event.preventDefault();
+        alert("Enter Comment");
+    }
+   }
+</script>
+
+    
+</body>
+</html>

@@ -1,0 +1,97 @@
+
+@font-face {
+    font-family: Product Sans;
+    src: url('../Fonts/Product\ Sans\ Regular.ttf');
+  }
+@font-face {
+    font-family: PB;
+    src: url('../Fonts/Product\ Sans\ Bold.ttf');
+}
+  *{
+    margin: 0;
+    padding: o;
+    box-sizing: border-box;
+    font-family: 'Product Sans';
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+html{
+    scroll-behavior: smooth;
+}
+a{
+    text-decoration: none;
+}
+#back{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+}
+#back img{
+    max-width: 30%;
+    height: auto;
+}
+h3{
+    margin-top: 50px;
+    font-size: 22px;
+}
+p{
+    margin-top: 20px;
+    font-size: 16px;
+    color: gray;
+    text-align: center;
+    line-height: 22px;
+}
+a{
+    width: 200px;
+    height: 50px;
+    background-color: rgb(36, 35, 35);
+    color: rgb(204, 204, 204);;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.432);
+    font-size: 15px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    #back{
+        height: 100%;
+        width: 100%;
+        padding: 20px 15px;
+    }
+    #back img{
+        max-width: 55%;
+    }
+    h3{
+        font-size: 19px;
+    }
+    p{
+        font-size: 15px;
+        line-height: 23px;
+    }
+    a{
+        width: 200px;
+        height: 50px;
+        background-color: rgb(36, 35, 35);
+        color: rgb(204, 204, 204);;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.432);
+        font-size: 15px;
+    }
+    
+}

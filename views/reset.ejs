@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../stylesheets/reset.css">
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <div id="mobLogo">
+            <a href="/profile">
+                <img src="../images/Socialite square .png" alt="">
+            </a>
+        </div>
+        <div id="logo">
+            <a href="/">
+                <img src="../images/Socialite full.png" alt="">
+            </a>
+        </div>
+        <div id="links">
+            <a class="navLinks mobLinks" href="/contactUs">Contact</a>
+            <a class="navLinks mobLinks" href="/aboutUs">Legal</a>
+            <a class="navLinks mobLinks" href="/">Register</a>
+            <a class="navLinks mobLinks" href="/login">Login</a>
+        </div>
+    </nav>
+    <div class="containerDiv">
+        <div id="back">
+            <div id="backHeader">
+                <h3>Forgot Password?</h3>
+                <p>No worries! We are here to help you.</p>
+            </div>
+            
+            <form action="/reset" method="post">
+                <p>Please enter the registered Email ID so that we can mail you the password reset link.</p>
+                <input type="email" name="email" placeholder="Enter email" required>
+                <input type="submit" value="Get Reset Link">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <h6>Quick Links</h6>
+        <div class="flexContainerNav">
+          <div class="fields">
+            <a href="/">Register</a>
+            <a href="/login">Login</a>
+          </div>
+          <div class="fields">
+            <a href="/contactUs">Contact Us</a>
+            <a href="/">About</a>
+          </div>
+        </div>
+      </footer>
+</body>
+</html>

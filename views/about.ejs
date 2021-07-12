@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialite</title>
+    <link rel="stylesheet" href="../stylesheets/about.css">
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    
+</head>
+<body>
+    <nav>
+        <div id="mobLogo">
+            <a href="/profile">
+                <img src="../images/Socialite square .png" alt="">
+            </a>
+        </div>
+        <div id="logo">
+            <a href="/profile">
+                <img src="../images/Socialite full.png" alt="">
+            </a>
+        </div>
+        <div id="search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search" id="searchBar">
+            <div id="searchResultsContainer">
+                
+            </div>
+        </div>
+        <div id="links">
+            <a id="prflLink" href="/profile">
+                <img id="navPrflImg" src= <%= user.profilePhoto %> alt="">
+                <h6><%= user.name %></h6>
+            </a>
+            <a class="navLinks mobLinks" href="/newsFeed">News Feed</a>
+            <a class="navLinks mobLinks" href="/messages">Chats</a>
+            <a class="navLinks mobLinks" href="/logout">Logout</a>
+            <div class="navLinks"><i id="settingBtn" class="fas fa-cog"></i></div>
+        </div>
+    </nav>
+
+    <div id="menu">
+        <a id="userInfo" href="/profile">
+            <img src= <%= user.profilePhoto %>  alt="">
+            <h4><%= user.name %></h4>
+        </a>
+        <hr>
+        <a class="menuLinks" href="/newsFeed"><i class="far fa-newspaper"></i>News Feed</a>
+        <a class="menuLinks" href="/friends"><i class="fas fa-user-friends"></i>Friends</a>
+        <a class="menuLinks" href="/messages"><i class="far fa-comment"></i>Chats</a>
+        <a class="menuLinks" href="/contact"><i class="far fa-question-circle"></i>Help & Support</a>
+        <a class="menuLinks" href="/contact"><i class="fas fa-ban"></i>Report a Bug</a>
+        <a class="menuLinks" href="/pendingRequests"><i class="fas fa-user-plus"></i>Pending Friend Requests</a>
+        <a class="menuLinks" href="/resetMyPassword"><i class="fas fa-shield-alt"></i>Reset Password</a>
+        <a class="menuLinks" href="/aboutUs"><i class="fas fa-info-circle"></i>Legal</a>
+        <a class="menuLinks" href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+        
+    </div>
+    <div id="main">
+        <div id="aboutHeader">
+            <h5>About</h5>
+        </div>
+        <div id="formContainer">
+            <form action="/about" method="post">
+                <p id="bioHeader">Bio</p>
+                <textarea name="bio" id="bio" placeholder="Describe yourself" maxlength="70"><%= user.bio %></textarea>
+                <div class="flexFields">
+                    <div class="field">
+                        <p>Name</p>
+                        <input type="text" name="name" placeholder="Enter full name" value="<%=user.name %>" maxlength="30">
+                    </div>
+                    <div class="field">
+                        <p>From</p>
+                        <input type="text" name="fromLoc" placeholder="Where do you live? ( City name, State name )" value="<%=user.from %>" maxlength="30">
+                    </div>
+                </div>
+                <div class="flexFields">
+                    <div class="field">
+                        <p>Date of Birth</p>
+                        <input type="date" name="dob" placeholder="Enter full name" min="1940-01-01" max="2020-12-31" value=<%=user.dob %>>
+                    </div>
+                    <div class="field">
+                        <p>Current Status</p>
+                        <select name="status">
+                            <option hidden disabled selected value>Select</option>
+                            <%
+                            var options = [ "Employed", "Self-employed", "Out of work","Homemaker","Student","Retired","Unable to work"];
+                            for ( var i = 0; i < options.length; i++ )
+                            {
+                                var selected = ( user.currentStatus == options[i] ) ? "selected" : "";
+                                %><option value="<%=options[ i ] %>" <%= selected %>><%=options[i] %></option><%
+                            }
+                            %>
+                        </select>
+                    </div>
+                </div>
+                <div class="flexFields">
+                    <div class="field">
+                        <p>Hobbies</p>
+                        <input type="text" name="hobbies" placeholder="Enter you hobbies" value="<%=user.hobbies %>" maxlength="40">
+                    </div>
+                    <div class="field">
+                        <p>Relationship Status</p>
+                        <select name="relationship">
+                            <option hidden disabled selected value>Select</option>
+                            <%
+                            var options = [ "Single", "Married", "In Relationship" ,"Widowed","Separated","Divorced"];
+                            for ( var i = 0; i < options.length; i++ )
+                            {
+                                var selected = ( user.relationStatus == options[i] ) ? "selected" : "";
+                                %><option value="<%=options[ i ] %>" <%= selected %>><%=options[i] %></option><%
+                            }
+                            %>
+                        </select>
+                    </div>
+                </div>
+                <div class="flexFields">
+                    <div class="field">
+                        <p>Gender</p>
+                        <select name="gender">
+                            <option hidden disabled selected value>Select</option>
+                            <%
+                            var options = [ "Male", "Female", "Other"];
+                            for ( var i = 0; i < options.length; i++ )
+                            {
+                                var selected = ( user.gender == options[i] ) ? "selected" : "";
+                                %><option value="<%=options[ i ] %>" <%= selected %>><%=options[i] %></option><%
+                            }
+                            %>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <p>Interested In</p>
+                        <!-- <select name="interested">
+                            <option hidden disabled value>Select</option>
+                            <option value="Male" <% user.gender == 'Male' ? 'selected' : "" %> >Male</option>
+                            <option value="Female" <% user.gender == "Female" ? "selected" : "" %> >Female</option>
+                            <option value="Other" <% user.gender == "Other" ? "selected" : "" %>>Other</option>
+                        </select> -->
+                        <select name="interested">
+                            <option hidden disabled selected value>Select</option>
+                            <%
+                            var options = [ "Male", "Female", "Other"];
+                            for ( var i = 0; i < options.length; i++ )
+                            {
+                                var selected = ( user.interestedIn == options[i] ) ? "selected" : "";
+                                %><option value="<%=options[ i ] %>" <%= selected %>><%=options[i] %></option><%
+                            }
+                            %>
+                        </select>
+                    </div>
+                </div>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+    <script language="javascript">print_state("sts");</script>
+    <script src="../javascripts/nav.js"></script>
+    
+</body>
+</html>

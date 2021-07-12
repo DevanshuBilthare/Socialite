@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialite</title>
+    <link rel="stylesheet" href="../stylesheets/chat.css">
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div id="mobLogo">
+            <a href="/profile">
+                <img src="../images/Socialite square .png" alt="">
+            </a>
+        </div>
+        <div id="logo">
+            <a href="/profile">
+                <img src="../images/Socialite full.png" alt="">
+            </a>
+        </div>
+        <div id="search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search" id="searchBar">
+            <div id="searchResultsContainer">
+                
+            </div>
+        </div>
+        <div id="links">
+            <a id="prflLink" href="/profile">
+                <img id="navPrflImg" src= <%=  user.profilePhoto %> alt="">
+                <h6><%= user.name %></h6>
+            </a>
+            <a class="navLinks mobLinks" href="/newsFeed">News Feed</a>
+            <a class="navLinks mobLinks" href="/messages">Chats</a>
+            <a class="navLinks mobLinks" href="/logout">Logout</a>
+            <div class="navLinks"><i id="settingBtn" class="fas fa-cog"></i></div>
+        </div>
+    </nav>
+
+    <div id="menu">
+        <a id="userInfo" href="/profile">
+            <img src= <%=  user.profilePhoto %>  alt="">
+            <h4><%= user.name %></h4>
+        </a>
+        <hr>
+        <a class="menuLinks" href="/newsFeed"><i class="far fa-newspaper"></i>News Feed</a>
+        <a class="menuLinks" href="/friends"><i class="fas fa-user-friends"></i>Friends</a>
+        <a class="menuLinks" href="/messages"><i class="far fa-comment"></i>Chats</a>
+        <a class="menuLinks" href="/contact"><i class="far fa-question-circle"></i>Help & Support</a>
+        <a class="menuLinks" href="/contact"><i class="fas fa-ban"></i>Report a Bug</a>
+        <a class="menuLinks" href="/pendingRequests"><i class="fas fa-user-plus"></i>Pending Friend Requests</a>
+        <a class="menuLinks" href="/resetMyPassword"><i class="fas fa-shield-alt"></i>Reset Password</a>
+        <a class="menuLinks" href="/aboutUs"><i class="fas fa-info-circle"></i>Legal</a>
+        <a class="menuLinks" href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+        
+    </div>
+    <div id="main">
+        <div id="allMessagesContainer">
+            <h4>Chats</h4>
+            <% if(messages.length > 0){ %>
+                <% messages.reverse().forEach(function(message){ %>
+                    <% var me %>
+                    <% var other %>
+                    <% message.author.username == user.username ? other = message.receiver : other = message.author  %>
+                    <a href=<%= `/chat/${other._id}` %> class="message">
+                        <img src=<%= other.profilePhoto %> alt="" class="msgUserProfile">
+                        <div class="msgDets">
+                            <h5><%= other.name %> <% if(other.isVerified){ %>
+                                <img src="data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNTExLjM3NSA1MTEuMzc1IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMS4zNzUgNTExLjM3NSIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Zz48cGF0aCBkPSJtNTExLjM3NSAyNTUuNjg3LTU3Ljg5LTY0LjI3MyA5LjA2NC04Ni4wNDUtODQuNjUtMTcuOTIxLTQzLjE4LTc1LjAxMS03OS4wMzEgMzUuMzItNzkuMDMxLTM1LjMyLTQzLjE4IDc1LjAxMS04NC42NSAxNy45MjEgOS4wNjMgODYuMDQ1LTU3Ljg5IDY0LjI3MyA1Ny44ODkgNjQuMjczLTkuMDYzIDg2LjA0NSA4NC42NSAxNy45MjEgNDMuMTggNzUuMDExIDc5LjAzMS0zNS4zMjEgNzkuMDMxIDM1LjMyMSA0My4xOC03NS4wMTEgODQuNjUtMTcuOTIxLTkuMDY0LTg2LjA0NXptLTE0OC40OTctNTUuOTg1LTEyOC4zNDUgMTQzLjc5Mi04OS4xODYtODkuMTg2IDIxLjIxMy0yMS4yMTMgNjYuNzM0IDY2LjczNCAxMDcuMjAzLTEyMC4xMDR6Ii8+PC9nPjwvc3ZnPg==" />
+                            <% } %></h5>
+                            <p>
+                                <% if(message.author.username == user.username){ %>
+                                    <span>You : </span>
+                                <% }else{ %>
+                                    <span><%= other.name %> : </span>
+                                <% } %>
+                                <%= message.msg %></p>
+                        </div>
+                    </a>
+                <% }) %>
+            <% }else{ %>
+                <div id="noChats">
+                    <h3>No Chats Yet</h3>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <script src="../javascripts/nav.js"></script>
+</body>
+</html>

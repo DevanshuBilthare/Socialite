@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socialite</title>
+  <link rel="stylesheet" href="../stylesheets/style.css">
+  <link rel="stylesheet" href="../stylesheets/nav.css">
+  <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+  <script src="../javascripts/script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+<body>
+  <nav>
+    <div id="mobLogo">
+      <a href="/profile">
+          <img src="../images/Socialite square .png" alt="">
+      </a>
+    </div>
+    <div id="logo">
+        <a href="/">
+            <img src="../images/Socialite full.png" alt="">
+        </a>
+    </div>
+    <div id="links">
+        <a class="navLinks mobLinks" href="/contactUs">Contact</a>
+        <a class="navLinks mobLinks" href="/aboutUs">Legal</a>
+        <a class="navLinks mobLinks" href="/">Register</a>
+        <a class="navLinks mobLinks" href="/login">Login</a>
+    </div>
+</nav>
+  <div id="container">
+    <div id="card4">
+      <div id="cardHeader">
+        <h3>CREATE ACCOUNT</h3>
+      </div>
+      <div class="formContainer">
+        <form action="/reg" method="POST" id="regForm" >
+          <input type="text" id="name" placeholder="Enter name" name="name" required maxlength="30">
+          <div class="alert" id="namealert"><i class="fas fa-exclamation-circle"></i>Only characters allowed.</div>
+          <input type="text" id="username" placeholder="Enter username" name="username" required maxlength="25">
+          <div class="alert" id="unamealert"><i class="fas fa-exclamation-circle"></i>Username already exists.</div>
+          <input type="password" id="password" placeholder="Enter password" name="password" required>
+          <div class="alert" id="passalert"><i class="fas fa-exclamation-circle"></i>Please enter a strong password.</div>
+          <div id="passwordNoticeContainer">
+            <div id="passwordNotice">
+              <ul style="list-style-type:disc">
+                <p> Password must contain : </p>
+                <li>Minimum 8 characters and maximum 15 characters in total.</li>
+                <li>Atleast one upper and lower case characters. [a-z] [A-Z]</li>
+                <li>Atleast one number. [0-9]</li>
+                <li>Atleast one special character. [@,#,$,& etc]</li>
+              </ul>              
+            </div>
+            <h6 id="passRules"><i class="fas fa-exclamation-circle"></i>Password Rules</h6>
+          </div>
+          <input type="number" id="contact" placeholder="Enter contact number" name="contact" required>
+          <div class="alert" id="contactalert"><i class="fas fa-exclamation-circle"></i>Please enter 10 digits.</div>
+          <input type="email" id="email" placeholder="Enter email" name="email" required>
+          <div class="alert" id="emailalert"><i class="fas fa-exclamation-circle"></i>Email already exists.</div>
+          <input type="Submit" value="Create New Account" id="submitBtn">
+          <a href="/login" id="logLink">Already a user? Login now</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h6>Quick Links</h6>
+    <div class="flexContainerNav">
+      <div class="fields">
+        <a href="/">Register</a>
+        <a href="/login">Login</a>
+      </div>
+      <div class="fields">
+        <a href="/contactUs">Contact Us</a>
+        <a href="/aboutUs">Legal</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    var uname = document.querySelector('#username');
+    var unamealert = document.querySelector('#unamealert');
+    var submitBtn = document.querySelector('#submitBtn');
+    var email = document.querySelector('#email');
+    var emailalert = document.querySelector('#emailalert');
+    var regForm = document.querySelector('#regForm');
+    uname.addEventListener('input',function(){
+      var username = uname.value;
+      unamealert.style.display = "none";
+      emailalert.style.display = "none";
+      if(username != ''){
+        fetch(`/checkUser/${username}`)
+          .then(foundData => foundData.json())
+          .then(function(data){
+            if(data != null){
+              unamealert.style.display = "block";
+              submitBtn.disabled = true;
+            }
+            else{
+              unamealert.style.display = "none";
+              submitBtn.disabled = false;
+            }
+          })
+      }
+    })
+    
+    email.addEventListener('input',function(){
+      var emailVal = email.value;
+      emailalert.style.display = "none";
+      if(emailVal != ''){
+        fetch(`/checkMail/${emailVal}`)
+          .then(foundData => foundData.json())
+          .then(function(data){
+            if(data != null){
+              emailalert.style.display = "block";
+              submitBtn.disabled = true;
+            }
+            else{
+              emailalert.style.display = "none";
+              submitBtn.disabled = false;
+            }
+          })
+      }
+    })
+    regForm.addEventListener('submit',function(event){
+      event.preventDefault();
+      var emailVal = email.value;
+      var username = uname.value;
+      var name = document.querySelector('#name').value;
+    var password = document.querySelector('#password').value;
+    var contact = document.querySelector('#contact').value;
+    var namealert = document.querySelector('#namealert');
+    var passalert = document.querySelector('#passalert');
+    var contactalert = document.querySelector('#contactalert');
+    namealert.style.display = "none";
+    passalert.style.display = "none";
+    contactalert.style.display = "none";
+    if(!/^[A-Za-z\s]+$/.test(name)){
+        namealert.style.display = "block";
+        event.preventDefault();
+    }
+    else if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(password)){
+        passalert.style.display = "block";
+        event.preventDefault();
+    }
+    else if(!/^\d{10}$/.test(contact)){
+        contactalert.style.display = "block";
+        event.preventDefault();
+    }
+    else{
+      fetch(`/checkUser/${username}`)
+          .then(foundData => foundData.json())
+          .then(function(data){
+            if(data != null){
+              unamealert.style.display = "block";
+              submitBtn.disabled = true;
+            }
+            else{
+                fetch(`/checkMail/${emailVal}`)
+                .then(foundData => foundData.json())
+                .then(function(data){
+                  if(data != null){
+                    emailalert.style.display = "block";
+                    submitBtn.disabled = true;
+                  }
+                  else{
+                    regForm.submit();
+                  }
+                })
+            }
+          })
+        }
+    })
+    var passwordRules = document.querySelector('#passRules');
+    var passwordNotice = document.querySelector('#passwordNotice');
+    passwordRules.addEventListener('mouseover',function(){
+      passwordNotice.style.display = 'block';
+    })
+    passwordRules.addEventListener('mouseout',function(){
+      passwordNotice.style.display = 'none';
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socialite</title>
+  <link rel="stylesheet" href="../stylesheets/style.css">
+  <link rel="stylesheet" href="../stylesheets/nav.css">
+  <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+  <script src="../javascripts/script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+<body>
+  <nav>
+    <div id="mobLogo">
+      <a href="/profile">
+          <img src="../images/Socialite square .png" alt="">
+      </a>
+  </div>
+    <div id="logo">
+        <a href="/">
+            <img src="../images/Socialite full.png" alt="">
+        </a>
+    </div>
+    <div id="links">
+        <a class="navLinks mobLinks" href="/contactUs">Contact</a>
+        <a class="navLinks mobLinks" href="/aboutUs">Legal</a>
+        <a class="navLinks mobLinks" href="/">Register</a>
+        <a class="navLinks mobLinks" href="/login">Login</a>
+    </div>
+</nav>
+  <div id="container">
+    <div id="card3">
+      <div id="cardHeader">
+        <h3>LOGIN</h3>
+      </div>
+      <% if(messages.errinfo){ %>
+        <div id="invalid">
+          <h5><i class="fas fa-exclamation-triangle"></i>Invalid ID or Password !</h5>
+        </div>
+      <%} %>
+      <% if(messages.resetinfo){ %>
+        <div id="invalid">
+          <h5 class="success"><i class="fas fa-check-circle"></i></i>Password Reset Successful !</h5>
+        </div>
+      <%} %>
+      <div class="formContainer">
+        <form action="/login" method="POST"">
+          <input type="text" id="username" placeholder="Enter username" name="username" required>
+          <input type="password" id="password" placeholder="Enter password" name="password" required>
+          <input type="Submit" value="Login" id="submitBtn">
+          <a href="/reset" class="resetLink">Forgot Password?</a>
+          <a href="/" id="logLink">New to Socialite? Register now</a>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <h6>Quick Links</h6>
+    <div class="flexContainerNav">
+      <div class="fields">
+        <a href="/">Register</a>
+        <a href="/login">Login</a>
+      </div>
+      <div class="fields">
+        <a href="/contactUs">Contact Us</a>
+        <a href="/aboutUs">About</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

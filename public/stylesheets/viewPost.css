@@ -1,0 +1,960 @@
+@font-face {
+    font-family: Product Sans;
+    src: url('../Fonts/Product\ Sans\ Regular.ttf');
+  }
+@font-face {
+    font-family: PB;
+    src: url('../Fonts/Product\ Sans\ Bold.ttf');
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Product Sans';
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    background-color: rgb(243, 243, 243);
+}
+#main{
+    width: 100%;
+    height: calc(100% - 75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#postMedia{
+    width: 65%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#postMedia img{
+    max-width: 100%;
+    max-height: 100%;
+    background-position: center;
+    object-fit: cover;
+}
+#post{
+    width: 35%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+
+}
+.postAllDets{
+    width: 100%;
+    height: calc(100% - 90px);
+    overflow-y: scroll;
+    padding: 0px 25px;
+}
+.postAllDets::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .postAllDets{
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+.postHeader{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+.postHeader a img{
+    width: 55px;
+    height: 55px;
+    background-position: center;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.postHeaderDets{
+    margin-left: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.postHeaderDets h6{
+    font-size: 18px;
+    margin-bottom: 4px;
+    color: rgb(41, 41, 41);
+    font-weight: 600;
+}
+.postHeaderDets p{
+    font-size: 13px;
+    color: rgb(105, 105, 105);
+}
+.caption{
+    margin-top: 15px;
+}
+.caption p{
+    font-size: 16px;
+    line-height: 22px;
+    color: rgb(39, 39, 39);
+}
+.postImage{
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+.postImage img{
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    background-position: center;
+    object-fit: cover;
+}
+.postReactions{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0px;
+    font-size: 15px;
+}
+.likeIcon{
+    font-size: 20px;
+    color: #056BE1;
+    margin-right: 7px;
+}
+.likeText{
+    color: #056BE1 !important;
+}
+.postLikes{
+    display: flex;
+    align-items: center;
+}
+.postReactions p{
+    color: rgb(48, 48, 48);
+}
+.postOptions{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0px;
+    border-top: 1px solid rgb(182, 182, 182);
+    border-bottom: 1px solid rgb(182, 182, 182);
+    font-size: 16px;
+}
+.postOpts{
+    width: 33%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #636363;
+    transition: all ease-out .3s;
+}
+.postOpts:hover{
+    background-color: rgb(241, 241, 241);
+    transition: all ease-in .3s;
+}
+.postOptsIcon{
+    font-size: 17px !important;
+    color: #707070 !important;
+    margin-right: 10px;
+}
+.postOpts .fa-thumbs-up{
+    font-size: 17px !important;
+}
+.postOptions button{
+    border: none;
+    outline: none;
+    background-color: white;
+    padding: 0px;
+    cursor: pointer;
+}
+.postOptions button p{
+    font-size: 16px !important;
+}
+.comments{
+    width: 100%;
+    /* overflow-y: scroll; */
+}
+.comments::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+.comments {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
+  
+.comment{
+    width: 100%;
+    display: flex;
+    margin-top: 15px;
+}
+.commentUserProfile img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;   
+    background-position: center;
+    object-fit: cover;
+}
+.commentDets{
+    margin-left: 15px;
+    width: 100%;
+}
+.commentDetsOpts{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.commentDetsInfo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.commentDetsInfo button i{
+    font-size: 15px !important;
+}
+.commentDets h6{
+    font-size: 15px;
+    color: rgb(49, 49, 49);
+}
+.commentDets p{
+    font-size: 13px;
+    color: rgb(105, 105, 105);
+    margin-top: 4px;
+}
+.commentContent{
+    width: 100%;
+    margin-top: 7px;
+}
+.commentContent p{
+    font-size: 15px;
+    color: rgb(32, 32, 32);
+    line-height: 21px;
+}
+.commentReactions{
+    display: flex;
+    align-items: center !important;
+    color: #707070;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.commentReacts{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+.commentReactions i{
+    font-size: 14px;
+    margin-right: 7px;
+}
+.commentReactions p{
+    font-size: 14px;
+}
+.commentReactLen{
+    margin-left: 15px;
+    color: rgb(155, 155, 155) !important;
+    font-size: 14px !important;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.addComment{
+    display: flex;
+    /* margin-top: 20px; */
+    width: 100%;
+    padding: 15px 20px;
+}
+.addComment form{
+    margin-left: 15px;
+    width: 100%;
+}
+.addComment form textarea{
+    width: 100%;
+    height: 60px;
+    border-radius: 4px;
+    background-color: rgb(243, 243, 243);
+    resize: none;
+    transition: border cubic-bezier(0.455, 0.03, 0.515, 0.955) .3s;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 10px;
+    font-size: 14px;
+}
+.addComment form textarea:focus{
+    border: 1px solid rgb(27, 27, 27);
+    transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) .3s;
+}
+.addComment form textarea::placeholder{
+    color: rgb(148, 148, 148);
+}
+.addComment form input[type="submit"]{
+    padding: 12px 19px;
+    border: none;
+    color: rgb(216, 216, 216);
+    background-color: rgb(36, 35, 35);
+    border-radius: 4px;
+    font-size: 13px;
+    transition: all ease-out .3s;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+.addComment form input[type="submit"]:hover{
+    color: rgb(230, 230, 230);
+    transition: all ease-in .3s;
+    background-color: rgb(0, 0, 0);
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: rgb(240, 240, 240);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px 0;
+    position: absolute;
+    z-index: 9999999;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+    font-size: 14px;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+  .tooltip i{
+      font-size: 17px;
+      color: rgb(190, 190, 190);
+      transition: color cubic-bezier(0.39, 0.575, 0.565, 1) .3s;
+  }
+.tooltip button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 1px 6px;
+}
+.tooltip button:hover i{
+    transition: color cubic-bezier(0.39, 0.575, 0.565, 1) .3s;
+    color: rgb(41, 41, 41);
+}
+.tooltip button .fa-trash-alt{
+    margin-left: 15px !important;
+}
+.postHeaderDetsOpts{
+    /* margin-right: 30px; */
+}
+#showReactions{
+    width: 30%;
+    height: auto;
+    max-height: 70%;
+    overflow-y: scroll;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    box-shadow: 0px 0px 0px 7000px rgba(0, 0, 0, 0.507);
+    padding: 15px 25px;
+    z-index: 9999999;
+    border-radius: 5px;
+    display: none;
+}
+.showReactionsHeader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    padding-bottom: 10px;
+}
+.showReactionUser{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.showReactionUserName{
+    color: rgb(36, 36, 36);
+    font-size: 15px;
+    font-weight: 700;
+}
+.showReactionsNum{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#showReactionsTotal{
+    font-size: 16px;
+}
+.showReactionUserImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+.showReactionUserImg img{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    object-fit: cover;
+}
+#showReactionUser{
+    display: flex;
+    align-items: center;
+}
+#closeReactions{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(226, 226, 226);
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.showReactionsNum i{
+    font-size: 20px;
+    color: #056BE1;
+    margin-right: 15px;
+}
+#showReactions{
+    width: 30%;
+    height: auto;
+    max-height: 70%;
+    overflow-y: scroll;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    box-shadow: 0px 0px 0px 7000px rgba(0, 0, 0, 0.507);
+    padding: 15px 25px;
+    z-index: 9999999;
+    border-radius: 5px;
+    display: none;
+}
+.showReactionsHeader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(187, 187, 187);
+    padding-bottom: 10px;
+}
+.showReactionUser{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.showReactionUserName{
+    color: rgb(36, 36, 36);
+    font-size: 15px;
+    font-weight: 700;
+}
+.showReactionsNum{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#showReactionsTotal{
+    font-size: 16px;
+}
+.showReactionUserImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+.showReactionUserImg img{
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    object-fit: cover;
+}
+#showReactionUser{
+    display: flex;
+    align-items: center;
+}
+#closeReactions{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(226, 226, 226);
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.showReactionsNum i{
+    font-size: 20px;
+    color: #056BE1;
+    margin-right: 15px;
+}
+#postDelUpdate{
+    width: 30%;
+    height: auto;
+    max-height: 70%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    box-shadow: 0px 0px 0px 7000px rgba(0, 0, 0, 0.507);
+    padding: 20px 25px;
+    z-index: 9999999;
+    border-radius: 5px;
+    display: none;
+}
+.postUpdateHeader{
+    font-size: 17px;
+    color: rgb(29, 29, 29);
+}
+#postDelUpdate form{
+    margin-top: 20px;
+    width: 100%;
+}
+#postDelUpdate form textarea{
+    width: 100%;
+    height: 100px;
+    border-radius: 4px;
+    background-color: rgb(243, 243, 243);
+    resize: none;
+    transition: border cubic-bezier(0.455, 0.03, 0.515, 0.955) .3s;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 10px;
+    font-size: 15px;
+}
+#postDelUpdate form textarea::-webkit-scrollbar {
+    display: none;
+  }
+#postDelUpdate form textarea:focus{
+    border: 1px solid rgb(27, 27, 27);
+    transition: all cubic-bezier(0.455, 0.03, 0.515, 0.955) .3s;
+}
+#postDelUpdate form textarea::placeholder{
+    color: rgb(148, 148, 148);
+}
+.postUpdateOptsContainer{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.postUpdateOpts{
+    padding: 11px 25px;
+    background-color: rgb(27, 27, 27);
+    color: rgb(235, 235, 235);
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+}
+.postDelHeader{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.postDelHeader i{
+    font-size: 58px;
+    color: rgb(182, 71, 71);
+}
+.postDelHeader h3{
+    margin-top: 20px;
+    font-size: 19px;
+}
+.postDelAlert{
+    text-align: center;
+    font-size: 15px;
+    color: rgb(87, 87, 87);
+    line-height: 22px;
+}
+.postDelOptsContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 25px;
+}
+.postDelOpts{
+    padding: 11px 25px;
+    background-color: rgb(27, 27, 27);
+    color: rgb(235, 235, 235);
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 400;
+
+}
+
+
+@media only screen and (max-width: 600px) {
+    .tooltiptext{
+        display: none;
+    }
+    #main{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    #postMedia{
+        width: 100%;
+        height: 300px;
+    }
+    #post{
+        width: 100%;
+        height: 100%;
+        padding: 15px 10px;
+    
+    }
+    .postAllDets{
+        width: 100%;
+        height: auto;
+        padding: 0px;
+        padding-bottom: 120px;
+    }
+    .postHeader a img{
+        width: 40px;
+        height: 40px;
+    }
+    .postHeaderDets{
+        margin-left: 10px;
+    }
+    .postHeaderDets h6{
+        font-size: 15px;
+        margin-bottom: 3px;
+    }
+    .postHeaderDets p{
+        font-size: 12px;
+    }
+    .caption{
+        margin-top: 10px;
+    }
+    .caption p{
+        font-size: 15px;
+        line-height: 22px;
+    }
+    .postImage{
+        margin-top: 10px;
+    }
+    .postReactions{
+        margin: 10px 0px;
+        font-size: 15px;
+    }
+    .likeIcon{
+        font-size: 20px;
+    }
+    .postLikesContainer{
+        max-width: calc(100% - 100px);
+    }
+    .postReactions p{
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .postOpts{
+        font-size: 14px;
+    }
+    .postOptsIcon{
+        font-size: 14px !important;
+    }
+    .postOpts .fa-thumbs-up{
+        font-size: 17px !important;
+    }
+    .postOptions button{
+        padding: 0px;
+    }
+    .postOptions button p{
+        font-size: 14px !important;
+    }
+    .commentUserProfile img{
+        width: 35px;
+        height: 35px;
+    }
+    .commentDets{
+        margin-left: 10px;
+    }
+    .commentDetsInfo button i{
+        font-size: 14px !important;
+    }
+    .commentDetsInfo button .fa-trash-alt{
+        margin-left: 20px !important;
+    }
+    .commentDets p{
+        font-size: 12px;
+        margin-top: 4px;
+    }
+    .commentContent p{
+        font-size: 15px;
+        line-height: 22px;
+    }
+    .commentReactions i{
+        font-size: 15px;
+    }
+    .commentReactions p{
+        font-size: 15px;
+        line-height: unset;
+    }
+    .addComment{
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        margin-top: 0px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.075);
+    }
+    .addComment form{
+        width: calc(100% - 50px);
+    }
+    .addComment form textarea{
+        width: 100%;
+        height: 60px;
+        font-size: 14px;
+    }
+    .tooltip button{
+        padding: 0px;
+    }
+    .tooltip button i{
+        font-size: 15px;
+    }
+    .tooltip button .fa-trash-alt{
+        margin-left: unset;
+    }
+
+    .tooltiptext{
+        display: none;
+    }
+    .postLikeNames{
+        display: none;
+    }
+    .mobPostLikes{
+        display: flex;
+    }
+    #showReactions{
+        width: 90%;
+        max-height: 80%;
+        padding: 15px;
+    }
+    .showReactionsHeader{
+        margin-bottom: 5px;
+        padding-bottom: 10px;
+    }
+    .showReactionUser{
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .showReactionUserName{
+        font-size: 14px;
+    }
+    #showReactionsTotal{
+        font-size: 15px;
+    }
+    .showReactionUserImg{
+        width: 35px;
+        height: 35px;
+        margin-right: 10px;
+    }
+    .showReactionsNum i{
+        font-size: 18px;
+        margin-right: 10px;
+    }
+    #postDelUpdate{
+        width: 95%;
+        max-height: 80%;
+        padding: 15px;
+    }
+    .postUpdateHeader{
+        font-size: 15px;
+    }
+    .postDelHeader i{
+        font-size: 50px;
+    }
+    .postDelHeader h3{
+        margin-top: 15px;
+        font-size: 17px;
+    }
+    .postDelOptsContainer{
+        margin-top: 20px;
+    }
+    .commentDetsOpts{
+        margin-right: 0px;
+    }
+    .addComment form input[type="submit"]{
+        padding: 11px 19px;
+        font-size: 12px;
+
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 991px) {
+    .tooltiptext{
+        display: none;
+    }
+    #main{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    #postMedia{
+        width: 100%;
+        height: 500px;
+    }
+    #post{
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+    
+    }
+    .postAllDets{
+        width: 100%;
+        height: auto;
+        padding: 0px;
+        padding-bottom: 125px;
+    }
+    .addComment{
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        margin-top: 0px;
+        padding: 10px 20px;
+        background-color: white;
+        box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.075);
+    }
+    .addComment form input[type="submit"]{
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+
+    }
+    .caption p{
+        font-size: 16px;
+        line-height: 23px;
+    }
+    .commentDets p{
+        font-size: 15px;
+        margin-top: 4px;
+        line-height: 22px;
+    }
+    .postReactions{
+        font-size: 16px;
+    }
+    .likeIcon{
+        font-size: 22px;
+    }
+    .commentReactions i{
+        font-size: 15px;
+
+    }
+    .commentReactions p{
+        font-size: 15px;
+    }
+    .commentReactLen{
+        font-size: 15px !important;
+    }
+    #postDelUpdate{
+        width: 55%;
+        max-height: 80%;
+        padding: 25px;
+    }
+    .postUpdateHeader{
+        font-size: 15px;
+    }
+    .postDelHeader i{
+        font-size: 53px;
+    }
+    .postDelHeader h3{
+        font-size: 19px;
+    }
+    .postUpdateHeader{
+        font-size: 19px;
+    }
+    .postDelOpts{
+        padding: 13px 27px;
+        font-size: 15px;
+    }
+    .postDelAlert{
+        font-size: 16px;
+        line-height: 24px;
+    }
+    #postDelUpdate form textarea{
+        width: 100%;
+        height: 150px;
+        font-size: 15px;
+        line-height: 22px;
+    }
+    .postUpdateOptsContainer input[type="submit"]{
+        width: 100px;
+        height: 40px;
+    }
+    #newPost{
+        margin-top: 30px;
+    }
+    .wrapper {
+        max-width: calc(100% - 180px);
+      }
+      .wrapper i.remove {
+        font-size: 16px;
+      }
+      #showReactions{
+        width: 55%;
+    }
+    .showReactionUser{
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .showReactionUserName{
+        font-size: 15px;
+    }
+    #showReactionsTotal{
+        font-size: 17px;
+    }
+    .showReactionsNum i{
+        font-size: 18px;
+    }
+    .commentDetsOpts{
+        margin-right: 0px;
+    }
+}

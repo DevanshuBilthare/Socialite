@@ -1,0 +1,424 @@
+@font-face {
+    font-family: Product Sans;
+    src: url('../Fonts/Product\ Sans\ Regular.ttf');
+  }
+@font-face {
+    font-family: PB;
+    src: url('../Fonts/Product\ Sans\ Bold.ttf');
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Product Sans';
+}
+body{
+    position: relative;
+}
+a{
+    text-decoration: none;
+}
+nav{
+    width: 100%;
+    height: 75px;
+    background-color: rgb(36, 35, 35);
+    padding: 0px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 99999999;
+}
+#logo img{
+    max-height: 40px;
+}
+#search{
+    width: 400px;
+    height: 40px;
+    padding: 0px 20px;
+    background-color: rgba(255, 255, 255, 0.096);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    position: relative;
+}
+.fa-search{
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.281);
+}
+#searchBar{
+    /* width: calc(100% - 100px); */
+    width: 100%;
+    margin-left: 10px;
+    height: 100%;
+    padding: 0px 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    
+}
+#searchBar::placeholder{
+    color: rgba(255, 255, 255, 0.281);
+    font-size: 14px;
+}
+#prflLink{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+#prflLink h6{
+    font-size: 15px;
+    color: rgb(204, 204, 204);
+    font-weight: 600;
+}
+#navPrflImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+    margin-right: 10px;
+}
+#links{
+    display: flex;
+    align-items: center;
+}
+.navLinks{
+    font-size: 14px;
+    color: rgb(216, 216, 216);
+    margin-left: 25px;
+    transition: color ease-out .3s;
+}
+.navLinks:hover{
+    color: rgb(230, 230, 230);
+    transition: color ease-in .3s;
+}
+.fa-cog{
+    font-size: 20px;
+    cursor: pointer;
+}
+#menu{
+    position: fixed;
+    /* width: 25%; */
+    width: 0px;
+    height: 100%;
+    background-color: rgb(36, 35, 35);
+    /* bottom: 0px; */
+    right: 0px;
+    padding-top: 25px;
+    padding-bottom: 75px;
+    overflow-y: scroll;
+    transition: width cubic-bezier(0.455, 0.03, 0.515, 0.955) .4s;
+    z-index: 999999;
+}
+#userInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+}
+#userInfo img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px 3px rgba(255, 255, 255, 0.315);
+    object-fit: cover;
+    background-position: center;
+}
+#userInfo h4{
+    margin-left: 25px;
+    font-size: 20px;
+    color: rgb(204, 204, 204);
+    font-weight: 500;
+}
+#menu hr{
+    border: 1px solid rgb(51, 51, 51);
+    margin-top: 30px;
+}
+.menuLinks{
+    display: flex;
+    width: 400px;
+    align-items: center;
+    /* background-color: rgba(255, 255, 255, 0.096); */
+    background-color: transparent;
+    padding: 25px 40px;
+    color: rgb(216, 216, 216);
+    font-size: 16px;
+    border-top: 1px solid rgb(82, 82, 82);
+    transition: all ease-out .3s;
+}
+.menuLinks:hover{
+    transition: all ease-in .3s;
+    background-color: rgba(255, 255, 255, 0.048);
+}
+.menuLinks i{
+    margin-right: 15px;
+}
+#menu::-webkit-scrollbar {
+    display: none;
+  }
+  #searchResultsContainer{
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    z-index: 99999999999999999999;
+    left: 0px;
+    top: 40px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    max-height: 500px;
+    overflow-y: scroll;
+}
+#searchResultsContainer::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#searchResultsContainer::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: #F5F5F5;
+}
+
+#searchResultsContainer::-webkit-scrollbar-thumb
+{
+	background-color: #a5a5a5;
+    border-radius: 10px;
+}
+
+.searchResults{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: rgb(236, 236, 236);
+    padding: 15px 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: 1px solid rgb(214, 214, 214);
+    transition: all ease-out .3s;
+}
+.searchResults:last-child{
+    border-bottom: none;
+}
+.searchResults:hover{
+    transition: all ease-in .3s;
+    background-color: rgba(0, 0, 0, 0.158);
+}
+.searchResults>img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-position: center;
+    object-fit: cover;
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.315);
+}
+.searchResultDets{
+    margin-left: 15px;
+    
+}
+.searchResultDets h4{
+    color: black;
+    font-size: 15px;
+}
+.searchResultDets p{
+    font-size: 14px;
+    color: rgb(109, 109, 109);
+}
+.searchResultDetsTop{
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+}
+.isVerifiedLogo{
+    max-width: 13px !important;
+    max-height: 13px !important;
+    margin-left: 6px;
+}
+.nores{
+    font-size: 15px;
+}
+footer{
+    width: 100%;
+    margin-top: 40px;
+    background-color: rgb(36, 35, 35);
+    padding: 25px 20px;
+    display: none;
+}
+footer h6{
+    color: rgb(241, 241, 241);
+    font-size: 14px;
+    font-weight: 300;
+}
+footer a{
+    font-size: 13px;
+    color: rgb(153, 153, 153);
+}
+.flexContainerNav{
+    width: 100%;
+    display: flex;
+}
+.fields{
+    margin-top: 15px;
+    margin-left: 35px;
+}
+.fields:first-child{
+    margin-left: 0px;
+}
+.fields a{
+    display: block;
+    margin-top: 15px;
+}
+a,button{
+    -webkit-tap-highlight-color: transparent;
+}
+#mobLogo{
+    display: none;
+}
+#searchResultsContainer::-webkit-scrollbar
+{
+	width: 2px;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    nav{
+        padding: 0px 15px;
+        height: 75px;
+    }
+    #logo img{
+        max-width: 115px;
+    }
+    footer{
+        display: block;
+    }
+    .mobLinks{
+        display: none;
+    }
+    #logo{
+        display: none;
+    }
+    #search{
+        width: 70%;
+        height: 38px;
+        padding: 0px 20px;
+    }
+    #prflLink{
+        display: none;
+    }
+    .menuLinks{
+        width: 300px;
+        font-size: 14px;
+        margin-left: 0px;
+    }
+    .navLinks{
+        margin-left: 0px;
+    }
+    #userInfo{
+        width: 300px;
+    }
+    #mobLogo{
+        display: block;
+    }
+    #mobLogo img{
+        width: 40px;
+        height: auto;
+    }
+    #logo{
+        display: none;
+    }
+    #userInfo img{
+        width: 60px;
+        height: 60px;
+    }
+    #userInfo h4{
+        margin-left: 20px;
+        max-width: 170px;
+        font-size: 17px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      
+    }
+    #menu{
+        padding-top: 20px;
+        overflow-y: scroll !important;
+    }
+    .menuLinks{
+        padding: 20px 25px;
+        color: rgb(216, 216, 216);
+        font-size: 14px;
+    }
+    .fa-search{
+        font-size: 16px;
+    }
+    #searchResultsContainer{
+        /* max-height: 400px; */
+    }
+    .searchResults{
+        padding: 15px 10px;
+    }
+    .searchResultDets{
+        max-width: calc(100% - 60px);
+    }
+    .searchResults>img{
+        width: 40px;
+        height: 40px;
+    }
+    .searchResultDets h4{
+        font-size: 14px;
+        max-width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .searchResultDets p{
+        font-size: 13px;
+        /* max-width: calc(100% - 50px); */
+        max-width: 100%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .searchResultDetsTop{
+        margin-bottom: 2px;
+    }
+    .nores{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 991px) {
+    nav{
+        padding: 0px 25px;
+        height: 75px;
+    }
+    #logo img{
+       max-height: 40px;
+    }
+    .navLinks{
+        font-size: 15px;
+    }
+    .mobLinks{
+        display: none;
+    }
+    #prflLink{
+        display: none;
+    }
+    #settingBtn{
+        font-size: 22px;
+    }
+    #search{
+        width: 390px;
+    }
+    
+}

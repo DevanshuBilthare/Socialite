@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socialite</title>
+    <link rel="stylesheet" href="../stylesheets/nav.css">
+    <link rel="stylesheet" href="../stylesheets/friends.css">
+    <link rel="shortcut icon" href="../images/Socialite square dark.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+</head>
+<body>
+    <nav>
+        <div id="mobLogo">
+            <a href="/profile">
+                <img src="../images/Socialite square .png" alt="">
+            </a>
+        </div>
+        <div id="logo">
+            <a href="/profile">
+                <img src="../images/Socialite full.png" alt="">
+            </a>
+        </div>
+        <div id="search">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search" id="searchBar">
+            <div id="searchResultsContainer">
+                
+            </div>
+        </div>
+        <div id="links">
+            <a id="prflLink" href="/profile">
+                <img id="navPrflImg" src= <%=  me.profilePhoto %> alt="">
+                <h6><%= me.name %></h6>
+            </a>
+            <a class="navLinks mobLinks" href="/newsFeed">News Feed</a>
+            <a class="navLinks mobLinks" href="/messages">Chats</a>
+            <a class="navLinks mobLinks" href="/logout">Logout</a>
+            <div class="navLinks"><i id="settingBtn" class="fas fa-cog"></i></div>
+        </div>
+    </nav>
+
+    <div id="menu">
+        <a id="userInfo" href= "/profile">
+            <img src= <%=  user.profilePhoto %>  alt="">
+            <h4><%= me.name %></h4>
+        </a>
+        <hr>
+        <a class="menuLinks" href="/newsFeed"><i class="far fa-newspaper"></i>News Feed</a>
+        <a class="menuLinks" href="/friends"><i class="fas fa-user-friends"></i>Friends</a>
+        <a class="menuLinks" href="/messages"><i class="far fa-comment"></i>Chats</a>
+        <a class="menuLinks" href="/contact"><i class="far fa-question-circle"></i>Help & Support</a>
+        <a class="menuLinks" href="/contact"><i class="fas fa-ban"></i>Report a Bug</a>
+        <a class="menuLinks" href="/pendingRequests"><i class="fas fa-user-plus"></i>Pending Friend Requests</a>
+        <a class="menuLinks" href="/resetMyPassword"><i class="fas fa-shield-alt"></i>Reset Password</a>
+        <a class="menuLinks" href="/aboutUs"><i class="fas fa-info-circle"></i>Legal</a>
+        <a class="menuLinks" href="/logout"><i class="fas fa-sign-out-alt"></i>Log Out</a>   
+    </div>
+    <div id="main">
+        <h3>Friends</h3>
+        <div id="friendsList">
+            <% if(user.friends.length > 0){ %>
+                <% user.friends.forEach(function(contact){ %>
+                    <div class="friend">
+                        <div class="friendDets">
+                            <a href= <%= `/profile/${contact._id}` %>>
+                                <img class="friendImage" src= <%= contact.profilePhoto %> alt="" >
+                            </a>
+                            <div class="friendDetsText">
+                                <a href= <%= `/profile/${contact._id}` %>>
+                                    <h4><%= contact.name %></h4>
+                                </a>
+                                <p><%= contact.username %></p>
+                            </div>
+                        </div>
+                        <div class="friendOptsContainer">
+                            <% if(me.friends.find(o => o == `${contact._id}`)){ %>
+                                <a href=<%=  `/unfriend/${contact._id}` %>  class="friendOpts">Unfriend</a>
+                           <% }else if( `${contact._id}` == `${me._id}`){ %>
+                            <a href= <%=  `/profile/${contact._id}` %> class="friendOpts">You</a>
+                           <% }else if(contact.pendingRequests.find(o => o == `${me._id}`)){ %>
+                                <a class="friendOpts" href= <%=  `/cancelRequest/${contact._id}` %> >Cancel Request</a>
+                           <% }else if(me.pendingRequests.find(o => o == `${contact._id}`)){ %>
+                            <a class="friendOpts" href= <%=  `/friendAdded/${contact._id}` %> >Accept Request</a>
+                           <% }else { %>
+                                <a class="friendOpts" href= <%=  `/addFriend/${contact._id}` %> >Add Friend</a>
+                           <% } %>
+
+                            <a href= <%=  `/profile/${contact._id}` %> class="friendOpts mobFrndOpts">Profile</a>
+                            <% if( `${contact._id}` !== `${me._id}`){ %>
+                                <a href= <%=  `/chat/${contact._id}` %>  class="friendOpts mobFrndOpts">Message</a>
+                            <% } %>
+                            
+                        </div>
+                    </div>
+                <% }) %>
+            <% }else{ %>
+                <div class="notAvailable">
+                    <h4>No Friends Added</h4>
+                </div>
+            <% } %>
+        </div>
+    </div>
+    <script src="../javascripts/nav.js"></script>
+</body>
+</html>
